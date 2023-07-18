@@ -73,7 +73,12 @@ const Contact = ({navigation}) => {
 
       <View style={styles.wrapper}>
         <BouncyCheckbox
+          size={25}
+          bounceEffect={1}
+          bounceEffectOut={1}
+          bounceEffectIn={0.5}
           value={agree}
+          innerIconStyle={{borderWidth: 3}}
           onPress={() => setAgree(!agree)}
           fillColor={agree ? '#4630EB' : 'grey'}
           // onPress={isChecked => {}}
@@ -113,9 +118,10 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   buttonStyle: {
-    borderRadius: 5,
+    borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 18,
+    marginHorizontal: 10,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -123,6 +129,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#eee',
+    marginVertical: 5,
   },
   wrapper: {
     display: 'flex',

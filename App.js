@@ -34,7 +34,7 @@ export default function App() {
             headerTitleStyle: {
               fontSize: 25,
             },
-            headerTitle: 'Courses',
+            headerTitle: 'GIF Screen',
             headerTitleAlign: 'center',
           }}
         />
@@ -47,7 +47,7 @@ export default function App() {
             headerTitleStyle: {
               fontSize: 25,
             },
-
+            headerTitle: 'API Call',
             headerTitleAlign: 'center',
           }}
         />
@@ -60,7 +60,7 @@ export default function App() {
             headerTitleStyle: {
               fontSize: 25,
             },
-
+            headerTitle: 'URL Links',
             headerTitleAlign: 'center',
           }}
         />
@@ -73,7 +73,7 @@ export default function App() {
             headerTitleStyle: {
               fontSize: 25,
             },
-
+            headerTitle: 'Text Input',
             headerTitleAlign: 'center',
           }}
         />

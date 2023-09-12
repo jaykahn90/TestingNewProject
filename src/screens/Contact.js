@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import React, {useState} from 'react';
 
 const Contact = ({navigation}) => {
   const [name, setName] = useState('');
@@ -30,6 +30,7 @@ const Contact = ({navigation}) => {
       <View style={styles.inputContainer}>
         <Text style={styles.labels}>Enter your name</Text>
         <TextInput
+          testID="name-input"
           style={styles.inputStyle}
           placeholder={'jalal khan'}
           value={name}
@@ -40,6 +41,7 @@ const Contact = ({navigation}) => {
       <View style={styles.inputContainer}>
         <Text style={styles.labels}>Enter your email</Text>
         <TextInput
+          testID="email-input"
           style={styles.inputStyle}
           placeholder={'abc@gmail.com'}
           value={email}
@@ -50,6 +52,7 @@ const Contact = ({navigation}) => {
       <View style={styles.inputContainer}>
         <Text style={styles.labels}>Enter your number</Text>
         <TextInput
+          testID="phone-input"
           style={styles.inputStyle}
           placeholder={'0406 xxx xxx'}
           value={phone}
@@ -60,6 +63,7 @@ const Contact = ({navigation}) => {
       <View style={styles.inputContainer}>
         <Text style={styles.labels}>Fill in the details</Text>
         <TextInput
+          testID="message-input"
           style={[styles.inputStyle, styles.multilineStyle]}
           placeholder={'Whats the issue'}
           value={message}
@@ -73,6 +77,7 @@ const Contact = ({navigation}) => {
 
       <View style={styles.wrapper}>
         <BouncyCheckbox
+          testID="checkbox"
           size={25}
           bounceEffect={1}
           bounceEffectOut={1}

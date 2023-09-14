@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import CheckBox from '@react-native-community/checkbox';
 import React, {useState} from 'react';
 
 const Contact = ({navigation}) => {
@@ -76,17 +76,12 @@ const Contact = ({navigation}) => {
       {/* CheckBox */}
 
       <View style={styles.wrapper}>
-        <BouncyCheckbox
+        <CheckBox
           testID="checkbox"
-          size={25}
-          bounceEffect={1}
-          bounceEffectOut={1}
-          bounceEffectIn={0.5}
+          boxType="square"
+          disabled={false}
           value={agree}
-          innerIconStyle={{borderWidth: 3}}
-          onPress={() => setAgree(!agree)}
-          fillColor={agree ? '#4630EB' : 'grey'}
-          // onPress={isChecked => {}}
+          onValueChange={() => setAgree(!agree)}
         />
         <Text style={styles.wrapperText}>
           I have read all terms and conditions
@@ -141,10 +136,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
     marginHorizontal: 10,
+    paddingTop: 1,
   },
   wrapperText: {
-    marginTop: 3,
-    marginLeft: -10,
+    marginTop: 6,
+    marginLeft: 10,
     color: '#7d7d7d',
   },
 });

@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import Menu from '../component/Menu';
 
 const Home = props => {
-  const description = 'Dummy App For Learning JEST & DETOX.';
+  const description = 'Dummy App For Learning JEST.';
   return (
     <View style={styles.mainContainer}>
       <View style={styles.homeTop}>

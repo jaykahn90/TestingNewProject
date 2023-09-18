@@ -17,14 +17,14 @@ const Contact = ({navigation}) => {
   const [agree, setAgree] = useState(false);
 
   const submit = () => {
-    if (!name && !email && !phone && !message) {
+    console.log('submit button working');
+    if (!name || !email || !phone || !message) {
       Alert.alert('please fill all fields');
     } else {
       Alert.alert(`Thank You ${name}`);
       navigation.navigate('Home');
     }
   };
-  console.log('name :', name);
   return (
     <View style={styles.mainContainer}>
       <View style={styles.inputContainer}>
@@ -96,6 +96,7 @@ const Contact = ({navigation}) => {
         ]}
         disabled={!agree}
         onPress={submit}
+        testID="contact-button"
       >
         <Text style={styles.buttonText}>Contact Us</Text>
       </TouchableOpacity>

@@ -14,17 +14,27 @@ const Contact = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
-  const [agree, setAgree] = useState(false);
+  const [agree, setAgree] = useState(true);
 
   const submit = () => {
     console.log('submit button working');
-    if (!name || !email || !phone || !message) {
-      Alert.alert('please fill all fields');
+    let missingFields = [];
+
+    if (!name) missingFields.push('name');
+    if (!email) missingFields.push('email');
+    if (!phone) missingFields.push('phone');
+    if (!message) missingFields.push('message');
+
+    if (missingFields.length > 0) {
+      Alert.alert(
+        'Please fill the following fields: ' + missingFields.join(', '),
+      );
     } else {
       Alert.alert(`Thank You ${name}`);
       navigation.navigate('Home');
     }
   };
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.inputContainer}>

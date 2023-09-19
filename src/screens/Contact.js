@@ -21,12 +21,15 @@ const Contact = ({navigation}) => {
     let missingFields = [];
     let invalidFields = [];
 
+    //validating Name
     if (!name) {
       missingFields.push('name');
     } else if (!/^[a-zA-Z\s]*$/.test(name)) {
       invalidFields.push('name');
     }
     if (!email) missingFields.push('email');
+
+    //Validating Phone
     if (!phone) {
       missingFields.push('phone');
     } else if (!/^\d+$/.test(phone)) {

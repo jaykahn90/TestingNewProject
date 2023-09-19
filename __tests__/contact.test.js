@@ -25,20 +25,37 @@ describe('<Contact />', () => {
     fireEvent.changeText(getByTestId('name-input'), 'John');
     fireEvent.press(getByTestId('contact-button'));
 
-    // We expect an alert with the missing fields (phone and message):
+    // We expect an alert with the missing fields (email, phone, message):
     expect(Alert.alert).toHaveBeenCalledWith(
       'Please fill the following fields: email, phone, message',
     );
   });
 
-  it('should display "Thank You" with username when all fields are filled', () => {
+  it('should display an alert indicating invalid feilds for invalid name and phone', () => {
+    const {getByTestId} = render(
+      <Contact navigation={{navigate: jest.fn()}} />,
+    );
+    // user puts wrong name i.e. Jay1234 instead of Jay
+    fireEvent.changeText(getByTestId('name-input'), 'Jay1234');
+    fireEvent.changeText(getByTestId('email-input'), 'jay@gmail.com');
+    // user puts number but in wrong format or make mistake.
+    fireEvent.changeText(getByTestId('phone-input'), '0412-abc-342');
+    fireEvent.changeText(getByTestId('message-input'), 'Hello, I need help!');
+    fireEvent.press(getByTestId('contact-button'));
+
+    expect(Alert.alert).toHaveBeenCalledWith(
+      'Invalid input in the following fields: name, phone',
+    );
+  });
+
+  it('should display "Thank You" with username when all fields are filled properly', () => {
     const {getByTestId} = render(
       <Contact navigation={{navigate: jest.fn()}} />,
     );
 
     fireEvent.changeText(getByTestId('name-input'), 'John');
     fireEvent.changeText(getByTestId('email-input'), 'john@example.com');
-    fireEvent.changeText(getByTestId('phone-input'), '123-456-7890');
+    fireEvent.changeText(getByTestId('phone-input'), '1234567890');
     fireEvent.changeText(getByTestId('message-input'), 'Hello, I need help!');
 
     fireEvent.press(getByTestId('contact-button'));

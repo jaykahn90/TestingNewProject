@@ -1,7 +1,6 @@
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react-native';
 import {Alert} from 'react-native';
-
+import {render, fireEvent} from '@testing-library/react-native';
 import Contact from '../src/screens/Contact';
 
 // Mock the Alert module to assert calls to it
@@ -17,18 +16,19 @@ describe('<Contact />', () => {
     Alert.alert.mockClear();
   });
 
-  it('should display an alert "please fill all fields" when no fields are filled', () => {
+  it('should display an alert indicating the missing fields when some fields are not filled', () => {
     const {getByTestId} = render(
       <Contact navigation={{navigate: jest.fn()}} />,
     );
 
-    const checkbox = getByTestId('checkbox');
-    const contactButton = getByTestId('contact-button');
+    // Let's say we only fill out the name field:
+    fireEvent.changeText(getByTestId('name-input'), 'John');
+    fireEvent.press(getByTestId('contact-button'));
 
-    fireEvent.press(checkbox);
-    fireEvent.press(contactButton);
-
-    expect(Alert.alert).toHaveBeenCalledWith('please fill all fields');
+    // We expect an alert with the missing fields (phone and message):
+    expect(Alert.alert).toHaveBeenCalledWith(
+      'Please fill the following fields: email, phone, message',
+    );
   });
 
   it('should display "Thank You" with username when all fields are filled', () => {
@@ -36,20 +36,13 @@ describe('<Contact />', () => {
       <Contact navigation={{navigate: jest.fn()}} />,
     );
 
-    const nameInput = getByTestId('name-input');
-    const emailInput = getByTestId('email-input');
-    const phoneInput = getByTestId('phone-input');
-    const messageInput = getByTestId('message-input');
-    const checkbox = getByTestId('checkbox');
-    const contactButton = getByTestId('contact-button');
+    fireEvent.changeText(getByTestId('name-input'), 'John');
+    fireEvent.changeText(getByTestId('email-input'), 'john@example.com');
+    fireEvent.changeText(getByTestId('phone-input'), '123-456-7890');
+    fireEvent.changeText(getByTestId('message-input'), 'Hello, I need help!');
 
-    fireEvent.changeText(nameInput, 'Test User');
-    fireEvent.changeText(emailInput, 'test@email.com');
-    fireEvent.changeText(phoneInput, '123-456-7890');
-    fireEvent.changeText(messageInput, 'Hello, this is a test message.');
-    fireEvent.press(checkbox);
-    fireEvent.press(contactButton);
+    fireEvent.press(getByTestId('contact-button'));
 
-    expect(Alert.alert).toHaveBeenCalledWith('Thank You Test User');
+    expect(Alert.alert).toHaveBeenCalledWith('Thank You John');
   });
 });

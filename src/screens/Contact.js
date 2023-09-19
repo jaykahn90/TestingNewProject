@@ -19,20 +19,35 @@ const Contact = ({navigation}) => {
   const submit = () => {
     console.log('submit button working');
     let missingFields = [];
+    let invalidFields = [];
 
-    if (!name) missingFields.push('name');
+    if (!name) {
+      missingFields.push('name');
+    } else if (!/^[a-zA-Z\s]*$/.test(name)) {
+      invalidFields.push('name');
+    }
     if (!email) missingFields.push('email');
-    if (!phone) missingFields.push('phone');
+    if (!phone) {
+      missingFields.push('phone');
+    } else if (!/^\d+$/.test(phone)) {
+      invalidFields.push('phone');
+    }
     if (!message) missingFields.push('message');
 
     if (missingFields.length > 0) {
       Alert.alert(
         'Please fill the following fields: ' + missingFields.join(', '),
       );
-    } else {
-      Alert.alert(`Thank You ${name}`);
-      navigation.navigate('Home');
+      return;
     }
+    if (invalidFields.length > 0) {
+      Alert.alert(
+        'Invalid input in the following fields: ' + invalidFields.join(', '),
+      );
+      return;
+    }
+    Alert.alert(`Thank You ${name}`);
+    navigation.navigate('Home');
   };
 
   return (

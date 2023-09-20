@@ -42,8 +42,8 @@ const UserData = () => {
 
             <View style={styles.mainContain}>
               <Text style={styles.myName}> Name: {item.name}</Text>
-              <Text style={styles.myName}> Name: {item.email}</Text>
-              <Text style={styles.myName}> Name: {item.mobile}</Text>
+              <Text style={styles.myName}> Email: {item.email}</Text>
+              <Text style={styles.myName}> Phone: {item.mobile}</Text>
             </View>
           </View>
         </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   mainHeader: {
     padding: 20,
     fontSize: 30,
-    color: '#a18ce5',
+    color: 'black',
     textAlign: 'center',
   },
   imgContainer: {

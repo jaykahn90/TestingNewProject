@@ -23,22 +23,6 @@ describe('<HookEffect />', () => {
       () => new Promise(resolve => setTimeout(() => resolve(), 3000)),
     );
 
-    //   it('fetches and displays user data correctly', async () => {
-    //     fetch.mockResolvedValueOnce({
-    //       json: async () => [
-    //         {
-    //           id: '1',
-    //           image:
-    //             'https://images.pexels.com/photos/851238/pexels-photo-851238.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    //           name: 'iSeek',
-    //           email: 'iSeekBlinds@abc.com',
-    //           mobile: '1234567899',
-    //         },
-    //       ],
-    //     });
-
-    //const {findByText} = render(<HookEffect />);
-
     render(<HookEffect />);
 
     await act(async () => {
@@ -49,14 +33,5 @@ describe('<HookEffect />', () => {
       "It's taking too long!",
       'Please try again.',
     );
-
-    // const nameElement = await findByText('Name: iSeekBlinds');
-    // expect(nameElement).toBeTruthy();
-
-    // const emailElement = await findByText('Email: iSeekBlinds@abc.com');
-    // expect(emailElement).toBeTruthy();
-
-    // const mobileElement = await findByText('Phone: 1234567899');
-    // expect(mobileElement).toBeTruthy();
   });
 });

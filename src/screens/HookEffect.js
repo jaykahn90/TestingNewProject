@@ -7,12 +7,6 @@ const UserData = () => {
 
   const getUserData = async () => {
     try {
-      ////////////This is the actual API fetch///////////
-      // await new Promise(resolve => setTimeout(resolve, 5000));
-      // const response = await fetch(
-      //   'https://mocki.io/v1/163619dd-a30b-484f-abe9-274525a61568',
-      // );
-
       /////////Simulate a delay of 5 seconds/////////////
       const simulateDelay = new Promise(resolve => setTimeout(resolve, 3000));
       const timeout = new Promise((_, reject) =>
@@ -20,12 +14,6 @@ const UserData = () => {
       );
 
       await Promise.race([simulateDelay, timeout]);
-
-      //const response1 = await Promise.race([response, timeout]);
-
-      // const realData = await response1.json();
-      // setMyData(realData);
-      // setIsLoaded(false);
     } catch (error) {
       if (error.message === 'Timeout') {
         Alert.alert("It's taking too long!", 'Please try again.');

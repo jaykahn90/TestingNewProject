@@ -6,6 +6,7 @@ const Course = () => {
   return (
     <View style={styles.mainContainer}>
       <Lottie
+        testID="lottie-gif"
         style={styles.gifContainer}
         source={require('../../assets/working.json')}
         autoPlay

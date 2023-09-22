@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View, Image, Text} from 'react-native';
+import {FlatList, StyleSheet, View, Image, Text, Alert} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
 const UserData = () => {
@@ -7,17 +7,33 @@ const UserData = () => {
 
   const getUserData = async () => {
     try {
-      const response = await fetch(
-        'https://mocki.io/v1/163619dd-a30b-484f-abe9-274525a61568',
+      ////////////This is the actual API fetch///////////
+      // await new Promise(resolve => setTimeout(resolve, 5000));
+      // const response = await fetch(
+      //   'https://mocki.io/v1/163619dd-a30b-484f-abe9-274525a61568',
+      // );
+
+      /////////Simulate a delay of 5 seconds/////////////
+      const simulateDelay = new Promise(resolve => setTimeout(resolve, 3000));
+      const timeout = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Timeout')), 2000),
       );
-      const realData = await response.json();
-      setMyData(realData);
-      setIsLoaded(false);
+
+      await Promise.race([simulateDelay, timeout]);
+
+      //const response1 = await Promise.race([response, timeout]);
+
+      // const realData = await response1.json();
+      // setMyData(realData);
+      // setIsLoaded(false);
     } catch (error) {
-      console.log(error);
+      if (error.message === 'Timeout') {
+        Alert.alert("It's taking too long!", 'Please try again.');
+      } else {
+        console.error(error);
+      }
     }
   };
-
   useEffect(() => {
     getUserData();
   }, []);

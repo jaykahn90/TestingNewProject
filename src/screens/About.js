@@ -36,6 +36,7 @@ const About = () => {
 
       <View style={styles.menuContainer}>
         <TouchableOpacity
+          testID="youtube-button"
           style={styles.buttonStyle}
           onPress={() =>
             Linking.openURL('https://www.youtube.com/@RolleaseAcmeda')
@@ -49,6 +50,7 @@ const About = () => {
           />
         </TouchableOpacity>
         <TouchableOpacity
+          testID="instagram-button"
           style={styles.buttonStyle}
           onPress={() =>
             Linking.openURL('https://www.instagram.com/rolleaseacmeda/')
@@ -62,6 +64,7 @@ const About = () => {
           />
         </TouchableOpacity>
         <TouchableOpacity
+          testID="facebook-button"
           style={styles.buttonStyle}
           onPress={() =>
             Linking.openURL('https://www.facebook.com/rolleaseacmeda/')

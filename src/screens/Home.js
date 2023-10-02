@@ -40,6 +40,7 @@ const Home = props => {
 };
 const styles = StyleSheet.create({
   mainContainer: {
+    flex: 1,
     height: '100%',
     display: 'flex',
     justifyContent: 'space-between',
@@ -81,6 +82,9 @@ const styles = StyleSheet.create({
     marginBottom: -60,
     borderWidth: 0.5,
     borderColor: 'grey',
+  },
+  menuStyle: {
+    //alignItems: 'center',
   },
 });
 

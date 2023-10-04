@@ -36,7 +36,7 @@ describe('<Contact />', () => {
       <Contact navigation={{navigate: jest.fn()}} />,
     );
     // user puts wrong name i.e. Jay1234 instead of Jay
-    fireEvent.changeText(getByTestId('name-input'), 'Jay1234');
+    fireEvent.changeText(getByTestId('name-input'), 'Jay123');
     fireEvent.changeText(getByTestId('email-input'), 'jay@gmail.com');
     // user puts number but in wrong format or make mistake.
     fireEvent.changeText(getByTestId('phone-input'), '0412-abc-342');

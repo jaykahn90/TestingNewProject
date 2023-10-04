@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     paddingBottom: 30,
-    backgroundColor: 'blue', //just for running/debuggin detox first test
+    //backgroundColor: 'blue', //just for running/debuggin detox first test
   },
   textStyle: {
     textTransform: 'uppercase',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   buttonStyle: {
-    backgroundColor: 'red',
+    //backgroundColor: 'red',
     paddingTop: 15,
     paddingBottom: 35,
     alignItems: 'center',

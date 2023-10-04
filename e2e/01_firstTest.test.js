@@ -89,3 +89,53 @@ describe('Testing URL links for Youtube, Instagram and Website', () => {
     await sleep(3000);
   });
 });
+
+describe('Contact Screen', () => {
+  beforeAll(async () => {
+    await device.launchApp();
+  });
+
+  beforeEach(async () => {
+    await device.launchApp({newInstance: true});
+    await element(by.id('Button4')).tap();
+  });
+
+  it('should display an alert for missing fields', async () => {
+    await element(by.id('name-input')).typeText('Sheng');
+    await element(by.id('contact-button')).tap();
+
+    await expect(
+      element(
+        by.text('Please fill the following fields: email, phone, message'),
+      ),
+    ).toBeVisible();
+    await sleep2(2000);
+    await element(by.text('OK')).tap(); // Assuming "OK" is a button to dismiss the alert
+  });
+
+  it('should display an alert for invalid fields', async () => {
+    await element(by.id('name-input')).typeText('Andrew123');
+    await element(by.id('email-input')).typeText('Andrew@gmail.com');
+    await element(by.id('phone-input')).typeText('0412-abc-342');
+    await element(by.id('message-input')).typeText('Hello, I need help!');
+    await element(by.id('contact-button')).tap();
+
+    await expect(
+      element(by.text('Invalid input in the following fields: name, phone')),
+    ).toBeVisible();
+    await sleep2(2000);
+    await element(by.text('OK')).tap();
+  });
+
+  it('should display a thank you alert when all fields are filled correctly', async () => {
+    await element(by.id('name-input')).typeText('Stefan');
+    await element(by.id('email-input')).typeText('Stefan@example.com');
+    await element(by.id('phone-input')).typeText('1234567890');
+    await element(by.id('message-input')).typeText('Hello, I need help!');
+    await element(by.id('contact-button')).tap();
+
+    await expect(element(by.text('Thank You Stefan'))).toBeVisible();
+    await sleep2(2000);
+    await element(by.text('OK')).tap();
+  });
+});

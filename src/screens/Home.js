@@ -9,8 +9,8 @@ const Home = props => {
       <View style={styles.homeTop}>
         <Image
           style={styles.headerImage}
-          resizeMode="contain" //when using this property then in iOS there is no borderRadius.
-          source={require('../../assets/images.jpg')}
+          resizeMode="center" //when using this property then in iOS there is no borderRadius.
+          source={require('../../assets/DetoxImage.jpg')}
         />
         <Text style={styles.mainHeader}>{props.mainScreenWelcome}</Text>
         <Text
@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     marginTop: 50,
     borderRadius: 20,
+    overflow: 'hidden',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 
   mainHeader: {
